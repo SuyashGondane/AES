@@ -1,0 +1,122 @@
+<h2 class="mb-3 text-center">{{ formLabels.header }}</h2>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">{{
+    formLabels.inputText
+  }}</label>
+  <textarea
+    class="form-control"
+    id="exampleFormControlTextarea1"
+    rows="3"
+    [(ngModel)]="formData.inputText"
+    [placeholder]="formLabels.inputTextPlaceholder"
+  ></textarea>
+  <div *ngIf="errorMessages.inputTextError != ''" class="text-danger mt-2">
+    {{ errorMessages.inputTextError }}
+  </div>
+</div>
+
+<div class="mb-3">
+  <label for="formFile" class="form-label">OR</label>
+  <input
+    id="formFile"
+    type="file"
+    class="form-control"
+    (change)="onFileChange($event)"
+  />
+</div>
+
+<div class="mb-3">
+  <label for="cipherMode" class="form-label">Select cipher mode</label>
+  <select
+    class="form-select"
+    aria-label="cipher mode selection"
+    [(ngModel)]="formData.cipherMode"
+  >
+    <option selected value="ECB">ECB</option>
+    <option value="CBC">CBC</option>
+  </select>
+</div>
+<div class="mb-3">
+  <label for="keySize" class="form-label">Key Size in Bits</label>
+  <select
+    class="form-select"
+    aria-label="key size selection"
+    [(ngModel)]="formData.keySize"
+  >
+    <option value="128">128</option>
+    <option value="192">192</option>
+    <option value="256" selected>256</option>
+  </select>
+</div>
+
+<div *ngIf="formData.cipherMode == 'CBC'" class="mb-3">
+  <label for="ivValue" class="form-label">Enter IV (Optional)</label>
+  <input
+    type="text"
+    class="form-control"
+    id="ivValue"
+    name="ivValue"
+    placeholder="Eg. (1234567898765432)"
+    [(ngModel)]="formData.iv"
+  />
+</div>
+
+<div class="mb-3">
+  <label for="secretKey" class="form-label">Enter Secret Key</label>
+  <input
+    type="text"
+    class="form-control"
+    id="secretKey"
+    name="secretKey"
+    placeholder="Enter Secret Key"
+    [(ngModel)]="formData.secretKey"
+  />
+  <div *ngIf="errorMessages.secretKeyError != ''" class="text-danger mt-2">
+    {{ errorMessages.secretKeyError }}
+  </div>
+</div>
+
+<div class="mb-3">
+  <p>{{ formLabels.radioLabelText }}</p>
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="radio"
+      [name]="formLabels.outputTypeName"
+      [(ngModel)]="formData.outputTextFormat"
+      value="base64"
+      id="base64"
+    />
+    <label class="form-check-label" for="base64"> Base64 </label>
+  </div>
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="radio"
+      [name]="formLabels.outputTypeName"
+      [(ngModel)]="formData.outputTextFormat"
+      value="hex"
+      id="hex"
+    />
+    <label class="form-check-label" for="hex"> Hex </label>
+  </div>
+</div>
+
+<div class="mb-3">
+  <button class="btn btn-primary" (click)="onBtnClick()">
+    {{ formLabels.buttonText }}
+  </button>
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">{{
+    formLabels.outputText
+  }}</label>
+  <textarea
+    class="form-control"
+    id="exampleFormControlTextarea1"
+    rows="3"
+    placeholder="Result goes here"
+    [(ngModel)]="formData.outputText"
+  ></textarea>
+</div>

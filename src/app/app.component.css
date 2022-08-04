@@ -1,0 +1,9 @@
+.decryption-col {
+  border-left: 2px solid gray;
+}
+
+@media only screen and (max-width: 768px) {
+  .decryption-col {
+    border-left: none;
+  }
+}
