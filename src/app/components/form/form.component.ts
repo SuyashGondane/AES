@@ -81,4 +81,10 @@ export class FormComponent implements OnInit {
 
     fileReader.readAsText(file);
   }
+
+  onInputChange(): void {
+    if (this.formData.inputText != '') {
+      this.errorMessages.inputTextError = '';
+    }
+  }
 }

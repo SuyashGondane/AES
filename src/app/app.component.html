@@ -4,16 +4,19 @@
   </div>
 </nav>
 
-<div class="container mt-4">
+<div class="container mt-4 mb-5">
   <div class="row">
-    <div class="col-md-4 offset-md-2">
+    <div class="col-md-4 offset-1 encryption-col">
       <app-form
         [formData]="encryptionFormData"
         [formLabels]="encryptionFormLabels"
         (btnClickEmitter)="onEncryptionSubmit($event)"
       ></app-form>
     </div>
-    <div class="col-md-4 decryption-col">
+    <div class="col-md-2">
+      <hr class="vl" />
+    </div>
+    <div class="col-md-4">
       <app-form
         [formData]="decryptionFormData"
         [formLabels]="decryptionFormLabels"

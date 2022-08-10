@@ -9,6 +9,7 @@
     rows="3"
     [(ngModel)]="formData.inputText"
     [placeholder]="formLabels.inputTextPlaceholder"
+    (ngModelChange)="onInputChange()"
   ></textarea>
   <div *ngIf="errorMessages.inputTextError != ''" class="text-danger mt-2">
     {{ errorMessages.inputTextError }}
