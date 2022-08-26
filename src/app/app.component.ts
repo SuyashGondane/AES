@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import FormDataFormat from './FormDataFormat';
 import FormLabels from './FormLabels';
 import { EncryptionService } from './services/encryption-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,55 +11,11 @@ import { EncryptionService } from './services/encryption-service.service';
 })
 export class AppComponent {
   title: string = 'Aes256';
-  errorMessage: string = '';
+  currentRoute: string = 'aes';
 
-  encryptionFormLabels: FormLabels = {
-    header: 'Encryption',
-    inputText: 'Enter text to be encrypted',
-    inputTextPlaceholder: 'Enter plain text to be encrypted',
-    outputTypeName: 'outputTextFormatE',
-    radioLabelText: 'Output cipher text format: ',
-    buttonText: 'Encrypt',
-    outputText: 'AES encrypted output',
-  };
+  constructor(private router: Router) {}
 
-  encryptionFormData: FormDataFormat = {
-    inputText: '',
-    cipherMode: 'CBC',
-    keySize: '256',
-    iv: '',
-    secretKey: '',
-    outputTextFormat: 'base64',
-    outputText: '',
-  };
-
-  decryptionFormLabels: FormLabels = {
-    header: 'Decryption',
-    inputText: 'Enter text to be decrypted',
-    inputTextPlaceholder: 'Enter cipher text to be decrypted',
-    outputTypeName: 'outputTextFormatD',
-    radioLabelText: 'Input cipher text format: ',
-    buttonText: 'Decrypt',
-    outputText: 'AES decrypted output',
-  };
-
-  decryptionFormData: FormDataFormat = {
-    inputText: '',
-    cipherMode: 'CBC',
-    keySize: '256',
-    iv: '',
-    secretKey: '',
-    outputTextFormat: 'base64',
-    outputText: '',
-  };
-
-  constructor(private encryptionService: EncryptionService) {}
-
-  onEncryptionSubmit(data: FormDataFormat) {
-    this.encryptionFormData.outputText = this.encryptionService.encrypt(data);
-  }
-
-  onDecryptionSubmit(data: FormDataFormat) {
-    this.decryptionFormData.outputText = this.encryptionService.decrypt(data);
+  onRouteChange(currentRoute: string): void {
+    this.currentRoute = currentRoute;
   }
 }

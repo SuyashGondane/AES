@@ -1,0 +1,125 @@
+.input-area, .output-area {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+}
+
+.input-area textarea, .output-area textarea {
+    resize: none;
+    padding: 10px;
+}
+
+.input-area label, .output-area label {
+    font-size: 13px;
+    color: #6c757d;
+}
+
+.textarea-actions-input {
+    position: absolute;
+    background: white;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    left: 2px;
+    bottom: 2px;
+    width: calc(100% - 20px);
+}
+
+.textarea-actions-output {
+    position: absolute;
+    background: #f5f5f5;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    left: 2px;
+    bottom: 2px;
+    width: calc(100% - 20px);
+}
+
+#trigger-output-copy {
+    font-size: 12px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#trigger-output-download, #trigger-output-clear {
+    font-size: 12px;
+    cursor: pointer;
+}
+
+#trigger-output-copy:hover, #trigger-output-download:hover, #trigger-output-clear:hover {
+    border-bottom: 1px solid;
+}
+
+.counts p {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #6c757d;
+    display: inline-block;
+}
+
+.counts p :first-child{
+    margin-right: 10px;
+}
+
+.words-count, .chars-count {
+    color: black;
+    font-weight: 500;
+}
+
+.inputs-content label {
+    font-size: 13px;
+    color: #6c757d;
+    margin-bottom: 10px;
+}
+
+button, input {
+    border-radius: 0;
+}
+
+#pre-container {
+    height: 288px;
+}
+
+pre {
+    overflow: auto;
+    height: 100%;
+    border: 1px solid #6c757d;
+    margin-bottom: 0;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* tooltip */
+.copy-tooltip::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 9998;
+    top: 35px;
+    left: 15px;
+    width: 0;
+    height: 0;
+    
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid rgba(0,0,0,.72);
+}
+
+.copy-tooltip::after{
+    content: 'Copied!';
+    display: block;
+    position: absolute;
+    z-index: 9999;
+    top: 40px;
+    left: -37px;
+    width: 114px;
+    height: 36px;
+
+    color: #fff;
+    font-size: 10px;
+    line-height: 36px;
+    text-align: center;
+
+    background: rgba(0,0,0,.72);
+    border-radius: 3px;
+}

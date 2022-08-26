@@ -1,0 +1,51 @@
+<div class="container mt-2">
+  <div *ngIf="errorText.length > 0" class="alert alert-danger" role="alert">
+    {{ errorText }}
+  </div>
+  <div class="row">
+    <div class="col-md-6 mt-2">
+      <div class="input-area">
+        <label class="mb-2" for="input-textarea">Input JSON</label>
+        <textarea
+          name="input-textarea"
+          id="input-textarea"
+          cols="30"
+          rows="10"
+          [(ngModel)]="data.inputText"
+        ></textarea>
+      </div>
+    </div>
+    <div class="col-md-6 mt-2">
+      <div class="input-area" id="pre-container">
+        <label class="mb-2" for="input-textarea">Formatted JSON</label>
+        <pre [textContent]="data.outputText">
+          <!-- <textarea
+            name="input-textarea"
+            id="input-textarea"
+            cols="30"
+            rows="10"
+            disabled
+            [(ngModel)]="data.outputText"
+          ></textarea> -->
+      </pre>
+
+        <div class="textarea-actions-output">
+          <span
+            id="trigger-output-copy"
+            [ngClass]="{ 'copy-tooltip': tooltipVisible }"
+            (click)="copyText()"
+            >Copy</span
+          >
+          <span id="trigger-output-download" (click)="onDownloadClick()"
+            >Download</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3 mb-3">
+    <div class="col-md-3">
+      <button class="btn btn-primary" (click)="formatJson()">Format</button>
+    </div>
+  </div>
+</div>

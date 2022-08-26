@@ -1,0 +1,85 @@
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-md-6 mt-2">
+      <div class="input-area">
+        <label class="mb-2" for="input-textarea">Paste your text here</label>
+        <textarea
+          name="input-textarea"
+          id="input-textarea"
+          cols="30"
+          rows="10"
+          [(ngModel)]="data.inputText"
+          (ngModelChange)="onInputChange()"
+        ></textarea>
+        <div class="textarea-actions-input">
+          <span id="trigger-output-clear" (click)="clearInput()">Clear</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mt-2">
+      <div class="output-area">
+        <label class="mb-2" for="output-textarea">Here is your text</label>
+        <textarea
+          name="output-textarea"
+          id="output-textarea"
+          cols="30"
+          rows="10"
+          [(ngModel)]="data.outputText"
+          disabled
+        ></textarea>
+        <div class="textarea-actions-output">
+          <span
+            id="trigger-output-copy"
+            [ngClass]="{ 'copy-tooltip': tooltipVisible }"
+            (click)="copyText()"
+            >Copy</span
+          >
+          <span id="trigger-output-download" (click)="onDownloadClick()"
+            >Download</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 counts">
+      <p>
+        Words Count : <span class="words-count">{{ wordCount }}</span>
+      </p>
+      <p>
+        Characters Count : <span class="chars-count">{{ charsCount }}</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="row align-items-md-end">
+    <div class="col-md-5">
+      <div class="inputs-content">
+        <label for="original-text">Text to Find</label>
+        <input
+          type="text"
+          name="original-text"
+          id="original-text"
+          class="form-control"
+          [(ngModel)]="data.textToFind"
+        />
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="inputs-content">
+        <label for="original-text">Text to Replace</label>
+        <input
+          type="text"
+          name="original-text"
+          id="original-text"
+          class="form-control"
+          [(ngModel)]="data.textToReplace"
+        />
+      </div>
+    </div>
+    <div class="col-md-2 mt-4">
+      <button class="btn btn-primary" (click)="onBtnClick()">Replace</button>
+    </div>
+  </div>
+</div>

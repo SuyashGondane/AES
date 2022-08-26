@@ -1,27 +1,48 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid justify-content-center">
-    <h1 class="text-light">AES Encryption/Decryption</h1>
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['aes']">Utilites</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['aes']"
+            (click)="onRouteChange('aes')"
+            [ngClass]="{ active: currentRoute == 'aes' }"
+            >AES</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['text-converter']"
+            (click)="onRouteChange('text-converter')"
+            [ngClass]="{ active: currentRoute == 'text-converter' }"
+            >Text Converter</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['json-formatter']"
+            (click)="onRouteChange('json-formatter')"
+            [ngClass]="{ active: currentRoute == 'json-formatter' }"
+            >JSON Formatter</a
+          >
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
-
-<div class="container mt-4 mb-5">
-  <div class="row">
-    <div class="col-md-4 offset-1 encryption-col">
-      <app-form
-        [formData]="encryptionFormData"
-        [formLabels]="encryptionFormLabels"
-        (btnClickEmitter)="onEncryptionSubmit($event)"
-      ></app-form>
-    </div>
-    <div class="col-md-2">
-      <hr class="vl" />
-    </div>
-    <div class="col-md-4">
-      <app-form
-        [formData]="decryptionFormData"
-        [formLabels]="decryptionFormLabels"
-        (btnClickEmitter)="onDecryptionSubmit($event)"
-      ></app-form>
-    </div>
-  </div>
-</div>
+<router-outlet></router-outlet>
